@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Final Project - CIT 215 </title>
+    <link rel="stylesheet" href="styleFinal.css" />
+    <script src="./lib/jquery-3.7.1.js"></script>
+    <script src="arraysFinal.js"></script>
+    <script src="javaFinal.js"></script>
+</head>
+<body>
+    <header>
+        <h1 id="headerText"> Shopping List</h1>
+    </header>
+
+    <div class="wrapper" id="listWrapper">
+        <div id="itemList">
+            <h3> 
+                List:
+            </h3>
+            <ol  id="shoppingListContainer"></ol>
+
+            <button id="showDetails">Show Details</button>
+
+            <h3 id="totalCost">
+            </h3>
+        </div>
+    
+    </div>
+
+    <div Class="wrapper" id="CRUDsection">
+        <div class="CRUDsectionInner" id="create">
+            <h3> 
+                Need to add an item to the list? Add it here! 
+            </h3>
+            <label for="id_newItem">Item Name</label><br/><input
+            type="text"
+            id="id_newItem"
+            name="id_newItem"
+            value=""
+            maxlength="50"
+            size="50"
+            /><br/>
+
+            <label for="id_type">Item Type</label><br/><input
+            type="text"
+            id="id_type"
+            name="id_type"
+            value=""
+            maxlength="50"
+            size="50"
+            /><br/>
+
+            <label for="id_subtype">Item Subtype</label><br/><input
+            type="text"
+            id="id_subtype"
+            name="id_subtype"
+            value=""
+            maxlength="50"
+            size="50"
+            /><br/>
+
+            <label for="id_description">Item Description</label><br/><input
+            type="text"
+            id="id_description"
+            name="id_description"
+            value=""
+            maxlength="50"
+            size="50"
+            /><br/>
+
+            <label for="id_cost">Item Cost</label><br/><input
+            type="text"
+            id="id_cost"
+            name="id_cost"
+            value=""
+            maxlength="50"
+            size="50"
+            /><br/>
+
+
+            <button id="Add">Add</button>
+        </div> 
+        <div class="CRUDsectionInner" id="update">
+            <h3>
+                Want to change/update something? Enter the number/name of the item!
+            </h3>
+            <label for="id_updateItem">Item name/number</label><br/><input
+            type="text"
+            id="id_updateItem"
+            name="id_updateItem"
+            value=""
+            maxlength="50"
+            size="50"
+            /><br/>
+            <button id="update">Update</button>
+        </div>
+
+        <div class="CRUDsectionInner" id="delete">
+            <h3> 
+                Want to delete an item? Enter the number/name of the item!
+            </h3>
+            <label for="id_deleteItem">Item number, name, or type.</label><br/><input
+            type="text"
+            id="id_deleteItem"
+            name="id_deleteItem"
+            value=""
+            maxlength="50"
+            size="50"
+            /><br/>
+            <button id="deleteButton">Delete</button>
+        </div>
+        
+    </div>
+   
+
+    
+</body>
+</html>

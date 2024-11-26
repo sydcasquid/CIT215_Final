@@ -1,0 +1,39 @@
+body { 
+    background-color: whitesmoke;
+}
+header {
+    background-color: whitesmoke;
+    text-align: center;
+}
+
+#headerText { 
+    color: rgb(144, 68, 109);
+}
+
+.wrapper { 
+    display:inline-block;
+    flex-direction: column;
+    width: 40%;
+    height: 90%;
+    border: 5px solid rgb(144, 68, 109);
+    margin: 70px;
+    padding: 10px;
+    align-items: center;
+
+}
+
+#itemsList { 
+    margin-right: 50%;
+}
+
+#CRUDsection { 
+    position:fixed;
+    /* margin-left: 52%; */
+    margin-top: -1%;
+    height: 620px;
+    /* align-items: flex-start; */
+}
+
+.CRUDsectionInner { 
+    padding-bottom: 50px;
+}
