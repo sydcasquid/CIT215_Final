@@ -42,18 +42,13 @@ const hideDetails = () => {
     });
 };
 
-// const toggleDetails = () => { 
-//     if ($("#showDetails").click()) {
-
-       
-// }
 
 const addItem = () => {
-    const name = $("#id_newItem").val(); 
-    const type = $("#id_type").val(); 
-    const subtype = $("#id_subtype").val(); 
-    const description = $("#id_description").val(); 
-    const cost = parseFloat($("#id_cost").val());
+    let name = $("#id_newItem").val(); 
+    let type = $("#id_type").val(); 
+    let subtype = $("#id_subtype").val(); 
+    let description = $("#id_description").val(); 
+    let cost = parseFloat($("#id_cost").val());
 
     if (name && type && subtype && description && !isNaN(cost) && cost >= 0) { 
         const newItem = { 
@@ -78,15 +73,64 @@ const addItem = () => {
         alert("Please fill all fields correctly.");
     }
 };
-    
+
+
 
 const updateItem = () => { 
+    let itemToUpdate = $("#id_updateItem").val(); 
+    // let itemUpdated = false; 
+    let indexToFind = parseInt(itemToUpdate) - 1;
+    if (!isNaN(indexToFind) && indexToFind >= 0 && indexToFind < shoppingList.length) {
+        let currentItem = shoppingList[indexToFind];
+        let nameUpdate = prompt(`Please update the name of the item. Current name: ${currentItem.name}`); 
+        if (nameUpdate === "") { 
+            currentItem.name = currentItem.name; 
+            alert("Invalid name.");
+        }else { 
+            currentItem.name = nameUpdate;
+        };
+        let typeUpdate = prompt(`Please update the type of the item. Current type: ${currentItem.type}`);
+        if (typeUpdate === "") { 
+            currentItem.type = currentItem.type; 
+            alert("Invalid type."); 
+        }else { 
+            currentItem.type =typeUpdate;
+        };
+        let subtypeUpdate = prompt(`Please update the subtype of the item. Current subtype: ${currentItem.subtype}`); 
+        if (subtypeUpdate === "") {
+            currentItem.subtype = currentItem.subtype; 
+            alert("Invalid subtype.");
+        }else { 
+            currentItem.subtype = subtypeUpdate;
+        }
+        let descriptionUpdate = prompt(`Please update the desciption of the item. Current Description: ${currentItem.description}`);
+        if (descriptionUpdate === "") { 
+            currentItem.description = currentItem.description; 
+            alert("Invalid description");
+        }else { 
+            currentItem.description = descriptionUpdate;
+        }
+        let costUpdate = parseFloat(prompt(`Please update the cost of the item. Current cost: ${currentItem.cost}`)); 
+        if (!isNaN(costUpdate)) {
+            currentItem.cost = costUpdate;
+        }else {
+            currentItem.cost = currentItem.cost;
+            alert("Invalid cost entered.");
+        };
+        list();
+        totalCost();
+        $("#id_updateItem").val("");
 
+} else { 
+    alert("Invalid item number entered.");
+    $("#id_updateItem").val("");
+}
 };
 
 
+
 const deleteItem = () => { 
-    let itemToDelete = $("#id_deleteItem").val().trim();
+    let itemToDelete = $("#id_deleteItem").val();
     let itemFound = false;
     let indexToFind = parseInt(itemToDelete) - 1; 
     if (!isNaN(indexToFind) && indexToFind >= 0 && indexToFind < shoppingList.length) {
@@ -102,11 +146,10 @@ const deleteItem = () => {
                 shoppingList.splice(i, 1);
                 itemFound = true;
                 alert("Item has been successfully deleted.");
-                break;
             };
         };
     };
-    if (!itemFound) {
+    if (itemFound === false) {
         alert("Item was unable to be found. Please try again.");
     };
 
@@ -114,35 +157,6 @@ const deleteItem = () => {
     totalCost();
 };
 
-
-
-// const deleteItem = () => { 
-//     let itemToDelete = $("#id_deletedItem").val();
-//     let itemFound = false;
-//     let indexToFind = parseInt(itemToDelete) - 1; 
-
-//     if (!isNaN(indexToFind) && indexToFind >= 0 && indexToFind <= shoppingList.length) { 
-//         shoppingList.splice(indexToFind, 1);
-//         itemFound = true;
-//         if (itemFound = true){ 
-//             alert("Item has been successfully deleted.");
-//         } else { 
-//             alert("Item was unable to be found. Please try again.");
-//         };
-//     }else { 
-//         for (let i = 0; i < shoppingList.length; i++) { 
-//             if (itemToDelete == shoppingList.name || shoppingList.type || shoppingList.subtype) {
-//                 shoppingList.splice(i, 1);
-//                 itemFound = true;
-//                 if (itemFound = true){ 
-//                     alert("Item has been successfully deleted.");
-//                 } else { 
-//                     alert("Item was unable to be found. Please try again.");
-//                 };
-//             };
-//         };
-//     };
-// };
 
 
 
@@ -153,4 +167,5 @@ $(document).ready(() => {
     $("#Add").click(addItem);
     $("#showDetails").click(showDetails);
     $("#deleteButton").click(deleteItem);
-})
+    $("#updateButton").click(updateItem);
+});
