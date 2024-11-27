@@ -25,10 +25,34 @@ const shoppingList = [
     },
 
     { 
+        name: "Black Beans", 
+        type: "Grocery", 
+        subtype: "Dry Goods", 
+        description: "5 pound bag of black beans",
+        cost: 7.99
+    },
+
+    { 
+        name: "Peanut Butter", 
+        type: "Grocery", 
+        subtype: "Protein Food", 
+        description: "Jiffy, smooth peanut butter",
+        cost: 2.99
+    },
+
+    { 
+        name: "Jelly", 
+        type: "Grocery", 
+        subtype: "Preserve", 
+        description: "Grape, concord jelly",
+        cost: 2.99
+    },
+
+    { 
         name: "Dish soap", 
         type: "Grocery", 
         subtype: "Cleaning", 
         description: "Dawn dishsoap, green apple, large size",
         cost: 3.99
-    }
+    },
 ]
