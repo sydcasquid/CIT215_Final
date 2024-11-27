@@ -1,4 +1,5 @@
 console.log(shoppingList);
+//Shows the list of items
 const list = () => {
     let listofItems = ``;
     $.each(shoppingList, (index, item) =>{
@@ -7,6 +8,7 @@ const list = () => {
     });
 };
 
+//Adds the total cost of all the items, displays them to the proper area
 const totalCost = () => { 
     let costofItems = 0;
     shoppingList.forEach(item => {
@@ -16,6 +18,7 @@ const totalCost = () => {
     $("#totalCost").text(`Total cost: $${costofItems.toFixed(2)}`);
 };
 
+//Allows the Show Details button to show all the other details of each item. Changes the button to say "Hide Details" after
 const showDetails = () => { 
     let listofItems = ``;
     $.each(shoppingList, (index, item) => {
@@ -32,17 +35,16 @@ const showDetails = () => {
     });
 };
 
+
+//Allows the details button to hide the details. Chnages the button to say "Show details" after
 const hideDetails = () => { 
-    let listofItems = ``; 
-    $.each(shoppingList, (index, item) =>{
-        listofItems += `<li>${item.name} - $${item.cost.toFixed(2)}</li>`;
-        $("#shoppingListContainer").html(listofItems);
-        $("#showDetails").text("Show Details");
-        $("#showDetails").click(showDetails);
-    });
+    list();
+    $("#showDetails").text("Show Details");
+    $("#showDetails").click(showDetails);
 };
 
 
+//Adds a new item to the list/array
 const addItem = () => {
     let name = $("#id_newItem").val(); 
     let type = $("#id_type").val(); 
@@ -69,16 +71,16 @@ const addItem = () => {
 
         list(); 
         totalCost();
+        alert("Item added successfully!");
     } else { 
         alert("Please fill all fields correctly.");
     }
 };
 
 
-
+//Updates a specific item
 const updateItem = () => { 
     let itemToUpdate = $("#id_updateItem").val(); 
-    // let itemUpdated = false; 
     let indexToFind = parseInt(itemToUpdate) - 1;
     if (!isNaN(indexToFind) && indexToFind >= 0 && indexToFind < shoppingList.length) {
         let currentItem = shoppingList[indexToFind];
@@ -120,6 +122,7 @@ const updateItem = () => {
         list();
         totalCost();
         $("#id_updateItem").val("");
+        alert("Item successfully updated!");
 
 } else { 
     alert("Invalid item number entered.");
@@ -128,7 +131,7 @@ const updateItem = () => {
 };
 
 
-
+//Deletes a specific item or multiple items, based on the number on the list, the item name, item type, or item subtype
 const deleteItem = () => { 
     let itemToDelete = $("#id_deleteItem").val();
     let itemFound = false;
@@ -159,7 +162,7 @@ const deleteItem = () => {
 
 
 
-
+//Loads the document 
 $(document).ready(() => { 
     list();
     totalCost();
